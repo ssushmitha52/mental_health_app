@@ -9,6 +9,7 @@ class Therapist(models.Model):
     gender = models.CharField(max_length=100)
     specialization = models.CharField(max_length=100)
     email = models.CharField(max_length=100)
+    phone = models.IntegrerField()
 
 
 class Patient(models.Model):
