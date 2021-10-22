@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from .models import Therapist
+from .models import *
 from copy import deepcopy
 
 
@@ -133,8 +133,21 @@ class HopcroftKarp(object):
         return self._matching
 
 
-def connectionRequest(request, therapist_id):
-    newConnection = Patient.objects.get(pk=therapist_id).connectionRequest
-    print(newConnection)
+def connect(request):
+    connection_requests = {'Patient1': {'therapist1'},
+                   'Patient2': {'therapist1', 'therapist2'},
+                   'Patient3': {'therapist1', 'therapist1'},
+                   'Patient4': {'therapist2', 'therapist3', 'therapist4'},
+                   'Patient4': {'therapist3', 'therapist4'},
+                   'Patient5': {'therapist4', 'therapist5', 'therapist6'},
+                   'Patient6': {'therapist5', 'therapist6', 'therapist7'},
+                   'Patient7': {'therapist8'}
+                   }
+    connections = HopcroftKarp(connection_requests).maximum_matching(keys_only=True)
+    for patient, therapist in connections.items():
+        print(patient,therapist)
+    return render(request=request, template_name="main/connect.html")
+
+
 
 

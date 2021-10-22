@@ -3,6 +3,15 @@ from .forms import NewUserForm
 from django.contrib.auth import login, authenticate
 from django.contrib import messages
 from django.contrib.auth.forms import AuthenticationForm
+from rest_framework import viewsets
+from .serializers import UserSerializer
+from django.contrib.auth.models import User
+
+# Create your views here.
+
+class UserView(viewsets.ModelViewSet):
+    serializer_class = UserSerializer
+    queryset = User.objects.all()
 
 
 def register(request):
@@ -12,10 +21,14 @@ def register(request):
             user = form.save()
             login(request, user)
             messages.success(request, "Registration successful.")
-            return redirect("login_user")
+            return redirect("home")
         messages.error(request, "Unsuccessful registration. Invalid information.")
+        return render(request=request, template_name="authentication/register.html",
+                      context={"register_form": form})
+
     form = NewUserForm()
     return render(request=request, template_name="authentication/register.html", context={"register_form": form})
+
 
 
 def login_user(request):
@@ -27,11 +40,17 @@ def login_user(request):
             user = authenticate(username=username, password=password)
             if user is not None:
                 login(request, user)
-                messages.info(request, f"You are now logged in as {username}.")
-                return redirect("login_user")
+                messages = f"You are now logged in as {username}."
+                return redirect("home")
             else:
-                messages.error(request, "Invalid username or password.")
+                messages= "Invalid username or password."
         else:
-            messages.error(request, "Invalid username or password.")
+            messages = "Invalid username or password."
+        return render(request=request, template_name="authentication/login.html",
+                      context={"login_form": form, "messages": messages})
     form = AuthenticationForm()
     return render(request=request, template_name="authentication/login.html", context={"login_form": form})
+
+
+def home(request):
+    return render(request=request, template_name="authentication/home.html")
