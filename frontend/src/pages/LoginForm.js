@@ -1,7 +1,11 @@
-import React from 'react'
+import React, {useState} from 'react'
+import { useDispatch } from "react-redux";
+import { Link, Redirect } from 'react-router-dom';
+import axios from "axios";
+import { useHistory } from "react-router";
 import './LoginForm.css'
-
-
+import authSlice from "../store/slices/auth";
+import {withRouter} from "react-router-dom"
 
 const emailRegex = RegExp(
     /^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/
@@ -40,33 +44,99 @@ class LoginForm extends React.Component {
         email: "",
         password: "",
         password2: ""
+      },
+      message : "",
+      loading : false
+
       }
-        }
 
         this.container = React.createRef()
         this.onSignIn = this.onSignIn.bind(this)
         this.onSignUp = this.onSignUp.bind(this)
+        this.handleLogin = this.handleLogin.bind(this)
+        this.handleRegister = this.handleRegister.bind(this)
+        this.handleChange = this.handleChange.bind(this)
 
     }
 
-    handleSubmit = e => {
+    handleChange = (e) => {
+        const name = e.target.name;
+        this.setState({ name: e.target.value});
+    }
+
+
+
+
+    handleLogin = (username, password) => {
+        const config = {
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        };
+        username = this.state.username
+        password = this.state.password
+        const body = JSON.stringify({ username, password });
+
+        axios
+          .post(`${process.env.REACT_APP_API_URL}/auth/login/`, body, config)
+          .then((res) => {
+                authSlice.actions.setAuthTokens({
+                token: res.data.access,
+                refreshToken: res.data.refresh,
+              });
+            ;
+            authSlice.actions.setAccount(res.data.user);
+            this.setState({ loading: false });
+            this.props.history.push("/home");
+          })
+          .catch((err) => {
+            this.setState({ message: err.toString() });
+          });
+    };
+
+    handleSubmitLogin = e => {
         e.preventDefault();
-    
-        if (formValid(this.state)) {
-          console.log(`
-            --SUBMITTING--
-            Username: ${this.state.username}
-            Gender: ${this.state.gender}
-            DOB: ${this.state.dob}
-            Email: ${this.state.email}
-            Password: ${this.state.password}
-            Password2: ${this.state.password2}
-          `);
-        } else {
-          console.error("FORM INVALID - DISPLAY ERROR MESSAGE");
-        }
-      };
-    
+        this.setState({ loading: true });
+        this.handleLogin(this.state.username, this.state.password);
+     };
+
+     handleSubmitRegister = e => {
+        e.preventDefault();
+        this.setState({ loading: true });
+        this.handleRegister();
+     };
+
+    handleRegister = () => {
+        const config = {
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        };
+        const username = this.state.username
+        const password = this.state.password
+        const gender = this.state.gender
+        const dob = this.state.dob
+        const email = this.state.email
+        const body = JSON.stringify({ username, password, gender, dob, email });
+
+        axios
+          .post(`${process.env.REACT_APP_API_URL}/auth/register/`, body, config)
+          .then((res) => {
+                authSlice.actions.setAuthTokens({
+                token: res.data.token,
+                refreshToken: res.data.refresh,
+              });
+            ;
+            authSlice.actions.setAccount(res.data.user);
+            this.setState({ loading: false });
+            this.onSignIn();
+          })
+          .catch((err) => {
+            this.setState({ message: err.toString() });
+          });
+    };
+
+
     componentWillUnmount() {
         clearInterval(this.interval);
 
@@ -118,6 +188,7 @@ class LoginForm extends React.Component {
         }
           
         this.setState({ formErrors, [name]: value }, () => console.log(this.state));
+        this.setState({ name: value});
       };
     
     render() {
@@ -130,7 +201,7 @@ class LoginForm extends React.Component {
             <div className="container" id="container" ref={this.container}>
                 <div className="form-container sign-up-container">
                     
-                    <form onSubmit={this.handleSubmit} noValidate>
+                    <form onSubmit={this.handleSubmitRegister} noValidate>
                       
                       <h2>Sign-Up</h2>
                      
@@ -150,7 +221,7 @@ class LoginForm extends React.Component {
               )}
             </div>
             <div className="gender">
-            <select onChange={this.handleChange} defaultValue="Select Gender">
+            <select name="gender" onChange={this.handleChange} defaultValue="Select Gender">
                         <option defaultValue>Gender</option>
                         <option value="male">Male</option>
                         <option value="female">Female</option>
@@ -221,19 +292,19 @@ class LoginForm extends React.Component {
               {formErrors.password2.length > 0 && (
                 <span className="errorMessage">{formErrors.password2}</span>
               )}
-              <button onClick={this.onSignUp}>Register</button>
+              <button disabled={this.state.loading}>Register</button>
             </div>
             </form>
             </div>
                 <div className="form-container sign-in-container">
-                    <form>
+                    <form onSubmit={this.handleSubmitLogin}>
                     <h2>Sign in</h2>
                         <div className="social-container">
                             
                         </div>
                         
-                        <input type="email" placeholder="Email" />
-                        <input type="password" placeholder="Password" />
+                        <input type="text" name="username" placeholder="Username" value={this.state.username} onChange={(e) => {this.handleChange(e)}}/>
+                        <input type="password" name="password" placeholder="Password" value={this.state.password} onChange={(e) => {this.handleChange(e)}}/>
                         <a href="#">Forgot your password?</a>
                         <button>Sign In</button>
                     </form>
@@ -257,5 +328,4 @@ class LoginForm extends React.Component {
         
     }
 }
-
-export default LoginForm
+export default withRouter(LoginForm);

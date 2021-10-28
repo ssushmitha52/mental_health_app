@@ -11,15 +11,27 @@
 
 
 import React from 'react';
-import LoginForm from './LoginForm'
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import LoginForm from "./pages/LoginForm";
+import Home from "./pages/Home";
+import store, { persistor } from "./store/slices/index";
+import { PersistGate } from "redux-persist/integration/react";
+import { Provider } from "react-redux";
+import ProtectedRoute from "./routes/ProtectedRoute";
 
-function App() {
+export default function App() {
   return (
-    <div className="App">
-          <LoginForm />
-    </div>
+    <Provider store={store}>
+      <PersistGate persistor={persistor} loading={null}>
+        <Router>
+          <div className="App">
+            <Switch>
+              <Route exact path="/" component={LoginForm} />
+              <Route exact path="/home" component={Home} />
+            </Switch>
+          </div>
+        </Router>
+      </PersistGate>
+    </Provider>
   );
 }
-
-export default App;
-

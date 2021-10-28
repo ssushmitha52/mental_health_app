@@ -1,9 +1,10 @@
-from django.contrib.auth.models import User
+from .models import UserAccount
 from rest_framework import serializers
 
 
 class UserSerializer(serializers.ModelSerializer):
 
     class Meta:
-        model = User
-        fields = ['id', 'username', 'email']
+        model = UserAccount
+        fields = ['id', 'username', 'gender', 'dob',  'email', 'is_active']
+        read_only_field = ['is_active']
