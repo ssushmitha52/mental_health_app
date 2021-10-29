@@ -34,6 +34,7 @@ ALLOWED_HOSTS = []
 INSTALLED_APPS = [
     'authentication.apps.AuthenticationConfig',
     'main.apps.MainConfig',
+    'journal.apps.JournalConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',

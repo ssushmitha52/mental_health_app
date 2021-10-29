@@ -1,6 +1,7 @@
 import React, {useState,useEffect} from 'react'
-import { ReactComponent as ArrowLeft } from '../assets/arrow-left.svg'
+import { ReactComponent as ArrowLeft } from '../imagess/arrow-left.svg'
 import { Link } from 'react-router-dom'
+import './notes.css'
 
 const Notepage = ({match,history}) => {
 
@@ -67,9 +68,9 @@ const Notepage = ({match,history}) => {
         <div className="note">
             <div className="note-header">
                 <h3>
-                   
+
                     <ArrowLeft onClick={handleSubmit} />
-                    
+
                 </h3>
                 {noteid !== 'new' ? (
                     <button onClick={deleteNote}>Delete</button>
@@ -77,7 +78,7 @@ const Notepage = ({match,history}) => {
                     <button onClick={handleSubmit}>Done</button>
                 )}
             </div>
-            <textarea onChange={(e) => { handleChange(e.target.value) }} value={note?.body}></textarea>       
+            <textarea onChange={(e) => { handleChange(e.target.value) }} value={note?.body}></textarea>
         </div>
     )
 }

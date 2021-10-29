@@ -1,6 +1,7 @@
 import React, {useState,useEffect} from 'react'
-import ListItem from '../components/Listitem'
+import ListItem from '../components/ListItem'
 import AddButton from '../components/AddButton'
+
 
 
 const NotesListPage = () => {

@@ -1,6 +1,16 @@
+import React from 'react';
+//import Cards from './Cards';
+import HeroSection from './HeroSection';
+// import Footer from '../Footer';
+
 function Home() {
-  return <h2>Hi, I am a Car!</h2>;
+  return (
+    <>
+      <HeroSection />
+      {/* <Cards /> */}
+      {/* <Footer /> */}
+    </>
+  );
 }
 
 export default Home;
-

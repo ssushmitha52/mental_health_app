@@ -292,7 +292,7 @@ class LoginForm extends React.Component {
               {formErrors.password2.length > 0 && (
                 <span className="errorMessage">{formErrors.password2}</span>
               )}
-              <button disabled={this.state.loading}>Register</button>
+              <button disabled={this.state.loading} onClick={this.onSignUp}>Register</button>
             </div>
             </form>
             </div>

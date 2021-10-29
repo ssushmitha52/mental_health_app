@@ -1,6 +1,7 @@
 import React from 'react'
 import {Link} from 'react-router-dom'
-import { ReactComponent as AddIcon } from '../assets/add.svg'
+import { ReactComponent as AddIcon } from '../images/add.svg'
+import '../pages/notes.css';
 
 
 const AddButton = () => {
@@ -10,5 +11,4 @@ const AddButton = () => {
         </Link>
     )
 }
-
 export default AddButton

@@ -1,5 +1,6 @@
 import React from 'react'
 import {Link} from 'react-router-dom'
+import '../pages/notes.css';
 
 let getContent = (note) => {
     let title = getTitle(note)

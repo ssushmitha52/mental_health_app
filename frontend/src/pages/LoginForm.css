@@ -1,21 +1,14 @@
-
 @import url('https://fonts.googleapis.com/css?family=Montserrat:400,800');
 
 * {
 	box-sizing: border-box;
+	margin: 0;
+    padding: 0;
+    font-family: 'PT Sans', sans-serif;
 }
 /* f6f5f7 */
 
-body {
-	background: #9566c4;
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	flex-direction: column;
-	font-family: 'Montserrat', sans-serif;
-	height: 100vh;
-	margin: -20px 0 50px;
-}
+
 
 h1 {
     /* color: #42b4c9; */
@@ -108,17 +101,15 @@ select {
   }
 
 .container {
-	background-color: rgb(243, 125, 208);
-	border-radius: 10px;
-  	box-shadow: 0 14px 28px rgba(0,0,0,0.25), 
-			0 10px 10px rgba(0,0,0,0.22);
-	position: relative;
-	overflow: hidden;
-	width: 768px;
-	max-width: 100%;
-	min-height: 530px;
-	
-	
+    background: url('../images/trees.jpg');
+	position: absolute;
+	width: 1200px;
+	height: 750px;
+	z-index: 15;
+	top: 10%;
+	left: 20%;
+	right: 10%;
+	margin: -100px 0 0 -150px;
 }
 
 a {
