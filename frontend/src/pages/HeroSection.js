@@ -17,7 +17,6 @@ function HeroSection() {
   <div>
     <Navbar />
     <div className='hero-container'>
-      <video src='/videos/bg3.mp4' autoPlay loop muted/>
       <h1>AMIGO</h1> 
       <p>Your Personal Mental Health Tracker</p>
       <div className='hero-btns'>

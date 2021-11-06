@@ -5,7 +5,8 @@ import axios from "axios";
 import { useHistory } from "react-router";
 import './LoginForm.css'
 import authSlice from "../store/slices/auth";
-import {withRouter} from "react-router-dom"
+import {withRouter} from "react-router-dom";
+const MODAL_OPEN_CLASS = "login";
 
 const emailRegex = RegExp(
     /^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/
@@ -63,7 +64,6 @@ class LoginForm extends React.Component {
         const name = e.target.name;
         this.setState({ name: e.target.value});
     }
-
 
 
 
@@ -146,7 +146,6 @@ class LoginForm extends React.Component {
         this.container.current.classList.add("right-panel-active");
     }
     onSignIn() {
-        debugger
         this.container.current.classList.remove("right-panel-active");
     }
 
@@ -198,17 +197,19 @@ class LoginForm extends React.Component {
         // const clipValue = `inset(0 ${this.state.maskStyle.left}px 0 ${this.state.maskStyle.right}px)`
         
         return (
-            <div className="container" id="container" ref={this.container}>
-                <div className="form-container sign-up-container">
+        <div className="loginPage">
+            <div className="container login" id="container" ref={this.container}>
+                <div className="form-container sign-up-container login">
                     
-                    <form onSubmit={this.handleSubmitRegister} noValidate>
+                    <form className="login" onSubmit={this.handleSubmitRegister} noValidate>
                       
-                      <h2>Sign-Up</h2>
+                      <h2 className="login">Sign-Up</h2>
                      
-            <div className="username">
+            <div className="username login">
               {/* <label htmlFor="firstName">First Name</label> */}
               <input
                 className={formErrors.username.length > 0 ? "error" : null}
+                className="login"
                 placeholder="Username"
                 type="text"
                 name="username"
@@ -220,8 +221,8 @@ class LoginForm extends React.Component {
                 <span className="errorMessage">{formErrors.username}</span>
               )}
             </div>
-            <div className="gender">
-            <select name="gender" onChange={this.handleChange} defaultValue="Select Gender">
+            <div className="gender login">
+            <select className="login" name="gender" onChange={this.handleChange} defaultValue="Select Gender">
                         <option defaultValue>Gender</option>
                         <option value="male">Male</option>
                         <option value="female">Female</option>
@@ -231,14 +232,16 @@ class LoginForm extends React.Component {
               placeholder="Gender"
               type="text"
               name="gender"
+              className="login"
               
               /> */}
               
               </div>
-              <div className="dob">
+              <div className="dob login">
               {/* <label htmlFor="email">Email</label> */}
               <input
-                className={formErrors.dob.length > 0 ? "error" : null}
+                className={formErrors.dob.length > 0 ? "login" : null}
+                className="login"
                 placeholder="Date of Birth"
                 type="date"
                 name="dob"
@@ -253,6 +256,7 @@ class LoginForm extends React.Component {
               {/* <label htmlFor="email">Email</label> */}
               <input
                 className={formErrors.email.length > 0 ? "error" : null}
+                className="login"
                 placeholder="Email"
                 type="email"
                 name="email"
@@ -267,6 +271,7 @@ class LoginForm extends React.Component {
               {/* <label htmlFor="password">Password</label> */}
               <input
                 className={formErrors.password.length > 0 ? "error" : null}
+                className="login"
                 placeholder="Password"
                 type="password"
                 name="password"
@@ -282,6 +287,7 @@ class LoginForm extends React.Component {
               {/* <label htmlFor="password">Password</label> */}
               <input
                 className={formErrors.password2.length > 0 ? "error" : null}
+                className="login"
                 placeholder="Confirm Password"
                 type="password"
                 name="password2"
@@ -292,38 +298,39 @@ class LoginForm extends React.Component {
               {formErrors.password2.length > 0 && (
                 <span className="errorMessage">{formErrors.password2}</span>
               )}
-              <button disabled={this.state.loading} onClick={this.onSignUp}>Register</button>
+              <button className="login" disabled={this.state.loading} onClick={this.onSignUp}>Register</button>
             </div>
             </form>
             </div>
-                <div className="form-container sign-in-container">
-                    <form onSubmit={this.handleSubmitLogin}>
-                    <h2>Sign in</h2>
-                        <div className="social-container">
+                <div className="form-container sign-in-container login">
+                    <form className="login" onSubmit={this.handleSubmitLogin}>
+                    <h2 className="login">Sign in</h2>
+                        <div className="social-container login">
                             
                         </div>
                         
-                        <input type="text" name="username" placeholder="Username" value={this.state.username} onChange={(e) => {this.handleChange(e)}}/>
-                        <input type="password" name="password" placeholder="Password" value={this.state.password} onChange={(e) => {this.handleChange(e)}}/>
-                        <a href="#">Forgot your password?</a>
-                        <button>Sign In</button>
+                        <input className="login" type="text" name="username" placeholder="Username" value={this.state.username} onChange={(e) => {this.handleChange(e)}}/>
+                        <input className="login" type="password" name="password" placeholder="Password" value={this.state.password} onChange={(e) => {this.handleChange(e)}}/>
+                        <a href="#" className="login">Forgot your password?</a>
+                        <button className="login">Sign In</button>
                     </form>
                 </div>
-                <div className="overlay-container">
-                    <div className="overlay">
-                        <div className="overlay-panel overlay-left">
-                            <h1>Welcome Back!</h1>
-                            <p>To keep connected with us please login with your personal info</p>
-                            <button className="ghost" id="signIn" onClick={this.onSignIn}>Sign In</button>
+                <div className="overlay-container login">
+                    <div className="overlay login">
+                        <div className="overlay-panel overlay-left login">
+                            <h1 className="login">Welcome Back!</h1>
+                            <p className="login">To keep connected with us please login with your personal info</p>
+                            <button className="ghost login" id="signIn" onClick={this.onSignIn}>Sign In</button>
                         </div>
-                        <div className="overlay-panel overlay-right">
-                            <h1>Hello, Friend!</h1>
-                            <p>Enter your personal details and start journey with us</p>
-                            <button className="ghost" id="signUp" onClick={this.onSignUp}>Sign Up</button>
+                        <div className="overlay-panel overlay-right login">
+                            <h1 className="login">Hello, Friend!</h1>
+                            <p className="login">Enter your personal details and start journey with us</p>
+                            <button className="ghost login" id="signUp" onClick={this.onSignUp}>Sign Up</button>
                         </div>
                     </div>
                 </div>
             </div>
+          </div>
         )  
         
     }

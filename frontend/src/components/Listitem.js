@@ -26,15 +26,14 @@ let getTitle = (note) => {
     return title
 }
 
-const Listitem = ({note}) => {
+const ListItem = ({note}) => {
     return (
         <Link to={`/note/${note.id}`}>
-            <div className="notes-list-item">
+            <div className="notes-list-item journal">
             <h3>{getTitle(note)}</h3>
             <p><span>{getTime(note)}</span>{getContent(note)}</p>
             </div>
         </Link>
     )
 }
-
-export default Listitem
+export default ListItem;

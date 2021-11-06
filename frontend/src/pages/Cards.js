@@ -7,8 +7,7 @@ import previousImage from '../images/viewprevious.jpg';
 function Cards() {
   return (
     <div className='cards'>
-    {/* <video src='/videos/b.jpg'/>  */}
-      <h1>Pen down your thoughts!</h1>
+      <h1 className="c">Pen down your thoughts!</h1>
       {/* <h2>Pen down your thoughts!</h2> */}
       <div className='cards__container'>
         <div className='cards__wrapper'>
@@ -17,7 +16,7 @@ function Cards() {
               src={journalImage}
               text='Write a new journal'
               // label=''
-              path='/text-editor'
+              path='/note/new'
             />
           
           {/* <ul className='cards__items'> */}
@@ -26,7 +25,7 @@ function Cards() {
               text='View previous journals'
               // text='Travel through the islands of Bali in our private island'
               // label=''
-              path='/notes-list'
+              path='/notes'
             />
           </ul>
           {/* <ul className='cards__items'>

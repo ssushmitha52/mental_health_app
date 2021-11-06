@@ -17,6 +17,7 @@ import Home from "./pages/Home";
 import Journal from "./pages/Journal";
 import SignUp from "./pages/SignUp";
 import NotesListPage from "./pages/NotesListPage";
+import NotePage from "./pages/Notepage";
 import store, { persistor } from "./store/slices/index";
 import { PersistGate } from "redux-persist/integration/react";
 import { Provider } from "react-redux";
@@ -32,7 +33,8 @@ export default function App() {
               <Route exact path="/" component={LoginForm} />
               <Route exact path="/home" component={Home} />
               <Route exact path="/journal" component={SignUp} />
-              <Route exact path="/notes-list" component={NotesListPage} />
+              <Route exact path="/notes" component={NotesListPage} />
+              <Route path="/note/:id" component={NotePage} />
               <Route exact path="/text-editor" component={Journal} />
 
             </Switch>

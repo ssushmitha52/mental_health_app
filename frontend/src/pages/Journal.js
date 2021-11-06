@@ -1,5 +1,4 @@
 import React from 'react';
-import './notes.css';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import TextEditor from "./TextEditor";
 import Textsave from "./Textsave";
@@ -11,14 +10,14 @@ function Journal() {
     <Navbar />
     <div classname="journal">
 
-    <Router>
-       
-        <TextEditor />
-        <Textsave />
-    </Router>
+        <Router>
+
+            <TextEditor />
+            <Textsave />
+        </Router>
 
     </div>
-    </div>
+  </div>
  );
 }
 

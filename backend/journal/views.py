@@ -39,7 +39,7 @@ def getRoutes(request):
             'description': 'Deletes and exiting note'
         },
     ]
-
+    
 	return Response(routes)
 
 @api_view(['GET'])

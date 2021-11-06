@@ -4,13 +4,23 @@
 	box-sizing: border-box;
 	margin: 0;
     padding: 0;
-    font-family: 'PT Sans', sans-serif;
 }
+
+.loginPage {
+	background: #9566c4;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+	font-family: 'Montserrat', sans-serif;
+	height: 100vh;
+	margin: -20px 0 50px;
+}
+
 /* f6f5f7 */
 
 
-
-h1 {
+h1.login {
     /* color: #42b4c9; */
 	text-align: center;
 	font-weight: bold;
@@ -18,13 +28,13 @@ h1 {
 	
 }
 
-h2 {
+h2.login {
 	text-align: center;
 	color:rgb(19, 14, 14);
 	font-size: 30px;
 }
 
-p {
+p.login {
 	font-size: 14px;
 	font-weight: 100;
 	line-height: 20px;
@@ -32,18 +42,18 @@ p {
 	margin: 20px 0 30px;
 }
 
-span {
+span.login {
 	font-size: 12px;
 }
 
-a {
+a.login {
 	color: #333;
 	font-size: 14px;
 	text-decoration: none;
 	margin: 15px 0;
 }
 
-button {
+button.login {
 	border-radius: 20px;
 	border: 1px solid #42b4c9;
 	background-color: #42b4c9;
@@ -56,20 +66,20 @@ button {
 	transition: transform 80ms ease-in;
 }
 
-button:active {
+button:active.login {
 	transform: scale(0.95);
 }
 
-button:focus {
+button:focus.login {
 	outline: none;
 }
 
-button.ghost {
+button.ghost.login {
 	background-color: transparent;
 	border-color: #FFFFFF;
 }
 
-form {
+form.login {
 	background-color: #FFFFFF;
 	display: flex;
 	align-items: right;
@@ -81,7 +91,7 @@ form {
 	color:rgb(255, 0, 0)
 }
 
-input {
+input.login {
 	background-color: #eee;
 	border: none;
 	padding: 12px 15px;
@@ -89,7 +99,7 @@ input {
 	width: 100%;
 }
 
-select {
+select.login {
 	width: 20%;
 	padding: 12px 15px;
 	margin: 8px 0;
@@ -99,7 +109,7 @@ select {
 	color: rgb(19, 14, 14);
 	font-family: 'Ariel', sans-serif;
   }
-
+/*
 .container {
     background: url('../images/trees.jpg');
 	position: absolute;
@@ -111,12 +121,26 @@ select {
 	right: 10%;
 	margin: -100px 0 0 -150px;
 }
+*/
+.container.login {
+	background-color: rgb(243, 125, 208);
+	border-radius: 10px;
+  	box-shadow: 0 14px 28px rgba(0,0,0,0.25),
+			0 10px 10px rgba(0,0,0,0.22);
+	position: relative;
+	overflow: hidden;
+	width: 768px;
+	max-width: 100%;
+	min-height: 530px;
 
-a {
+
+}
+
+a.login {
 	color:rgb(255, 0, 0)
 }
 
-.form-container {
+.form-container.login {
 	position: absolute;
 	top: 0;
 	height: 100%;
@@ -125,7 +149,7 @@ a {
 	align-items: center;
 }
 
-.sign-in-container {
+.sign-in-container.login {
 	left: 0;
 	width: 50%;
 	z-index: 2;
@@ -133,11 +157,11 @@ a {
 	
 }
 
-.container.right-panel-active .sign-in-container {
+.container.right-panel-active .sign-in-container.login {
 	transform: translateX(100%);
 }
 
-.sign-up-container {
+.sign-up-container.login {
 	left: 0;
 	width: 50%;
 	opacity: 0;
@@ -147,7 +171,7 @@ a {
 }
 
 
-.container.right-panel-active .sign-up-container {
+.container.right-panel-active .sign-up-container.login {
 	transform: translateX(100%);
 	opacity: 1;
 	z-index: 5;
@@ -166,7 +190,7 @@ a {
 	}
 }
 
-.overlay-container {
+.overlay-container.login {
 	position: absolute;
 	top: 0;
 	left: 50%;
@@ -177,11 +201,11 @@ a {
 	z-index: 100;
 }
 
-.container.right-panel-active .overlay-container{
+.container.right-panel-active .overlay-container.login{
 	transform: translateX(-100%);
 }
 
-.overlay {
+.overlay.login {
 	background: #5fd8e0;
 	background: -webkit-linear-gradient(to right, #6fbfc5, #078aa1);
 	background: linear-gradient(to right, #6fbfc5, #078aa1);
@@ -197,11 +221,11 @@ a {
 	transition: transform 0.6s ease-in-out;
 }
 
-.container.right-panel-active .overlay {
+.container.right-panel-active .overlay.login {
   	transform: translateX(50%);
 }
 
-.overlay-panel {
+.overlay-panel.login {
 	position: absolute;
 	display: flex;
 	align-items: center;
@@ -216,28 +240,28 @@ a {
 	transition: transform 0.6s ease-in-out;
 }
 
-.overlay-left {
+.overlay-left.login {
 	transform: translateX(-20%);
 }
 
-.container.right-panel-active .overlay-left {
+.container.right-panel-active .overlay-left.login {
 	transform: translateX(0);
 }
 
-.overlay-right {
+.overlay-right.login {
 	right: 0;
 	transform: translateX(0);
 }
 
-.container.right-panel-active .overlay-right {
+.container.right-panel-active .overlay-right.login {
 	transform: translateX(20%);
 }
 
-.social-container {
+.social-container.login {
 	margin: 20px 0;
 }
 
-.social-container a {
+.social-container a.login {
 	border: 1px solid #DDDDDD;
 	border-radius: 50%;
 	display: inline-flex;
@@ -248,27 +272,6 @@ a {
 	width: 40px;
 }
 
-footer {
-    background-color: #222;
-    color: #fff;
-    font-size: 14px;
-    bottom: 0;
-    position: fixed;
-    left: 0;
-    right: 0;
-    text-align: center;
-    z-index: 999;
-}
-
-footer p {
-    margin: 10px 0;
-}
-
-footer i {
-    color: red;
-}
-
-footer a {
-    color: #3c97bf;
-    text-decoration: none;
+.errorMessage {
+    font-size: 12px;
 }
