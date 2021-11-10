@@ -1,0 +1,155 @@
+.homeHeader {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: white;
+  position: fixed;
+  top: 0;
+  width: 100%;
+}
+
+.homeLogo {
+  font-family: 'Libre Baskerville', serif;
+  float: left;
+  margin: 20px 10px;
+  font-size: 2em;
+}
+
+.subtitle {
+  font-size: .5em;
+  float: left;
+}
+
+.homeLogin {
+  float: right;
+  text-decoration: none;
+  color: black;
+  cursor: default;
+  padding: 5px;
+  margin: 10px 10px;
+  border: 1px solid black;
+  border-radius: 10px;
+  font-size: .5em;
+}
+
+.homeBody {
+  margin-top: 80px;
+  padding-top: 40px;
+  max-width: 100%;
+}
+
+.about1 {
+  letter-spacing: .05em;
+  margin-top: 40px;
+  margin-bottom: 80px;
+}
+
+.orange {
+  color: #eca87f;
+  font-weight: bold;
+}
+
+.about2 {
+  font-size: 20px;
+  letter-spacing: .1em;
+}
+
+.about3 {
+  font-size: 18px;
+  letter-spacing: .05em;
+  margin-top: 80px;
+  margin-bottom: 40px;
+}
+
+.italic {
+  font-style: italic;
+}
+
+.section1 {
+  padding: 20px;
+  background-color: #0088D9;
+  color: white;
+  text-align: center;
+}
+
+.section2, .section3, .section4, .section5 {
+  padding: 20px;
+  text-align: center;
+}
+
+.screenshot {
+  margin-top: 40px;
+}
+
+.section6 {
+  padding: 20px;
+}
+
+.sectionHeader {
+  font-size: 2em;
+  text-align: center;
+  list-style-type: none;
+  display: block;
+  padding: 0;
+  margin: 0 auto 0 auto;
+}
+
+.sectionContent {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  padding: 20px;
+  margin: 20px;
+  background-color: #e6f3fb;
+  color: black;
+  font-size: 0.5em;
+}
+
+.homeFooter {
+  padding: 10px;
+}
+
+.port {
+  text-decoration: none;
+  cursor: pointer;
+  color: black;
+}
+
+#git {
+  margin-right: 10px;
+  color: #3E00E5;
+}
+
+#linked {
+  color: #3E00E5;
+}
+
+.icons {
+  font-size: .25em;
+  text-decoration: none;
+  color: black;
+}
+
+@media screen and (min-width: 630px) {
+  .homeLogin {
+    padding: 10px;
+    font-size: 1em;
+  }
+  .about3 {
+    padding-left: 80px;
+    padding-right: 80px;
+  }
+}
+
+@media screen and (min-width: 910px) {
+  .about3 {
+    padding-left: 150px;
+    padding-right: 150px;
+  }
+}
+
+@media screen and (min-width: 1350px) {
+  .about3 {
+    padding-left: 300px;
+    padding-right: 300px;
+  }
+}
