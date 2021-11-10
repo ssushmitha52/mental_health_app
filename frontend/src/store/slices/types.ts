@@ -9,4 +9,5 @@ export interface AccountResponse {
   };
   access: string;
   refresh: string;
+  token: string;
 }

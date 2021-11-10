@@ -1,13 +1,16 @@
-#from django.http.response import JsonResponse
+# from django.http.response import JsonResponse
 from django.shortcuts import render
 from rest_framework.response import Response
 from rest_framework.decorators import api_view
 from .models import Note
-from.serializers import NoteSerializer
+from .serializers import NoteSerializer
+from authentication.models import UserAccount
+
+
 
 @api_view(['GET'])
 def getRoutes(request):
-	routes = [
+    routes = [
         {
             'Endpoint': '/notes/',
             'method': 'GET',
@@ -39,26 +42,36 @@ def getRoutes(request):
             'description': 'Deletes and exiting note'
         },
     ]
-    
-	return Response(routes)
+
+    return Response(routes)
+
 
 @api_view(['GET'])
 def getNotes(request):
-    notes=Note.objects.all().order_by('-created')
-    serializer = NoteSerializer(notes,many=True)
+    print(request.user)
+    user = UserAccount.objects.get(username=request.user)
+    notes = Note.objects.filter(user=user)
+    print("FDg", notes)
+    serializer = NoteSerializer(notes, many=True)
+    print(serializer.data)
+    print("FDg")
     return Response(serializer.data)
 
+
 @api_view(['GET'])
-def getNote(request,pk):
-    notes=Note.objects.get(id=pk)
-    serializer = NoteSerializer(notes,many=False)
+def getNote(request, pk):
+    print(pk)
+    user = UserAccount.objects.get(username=request.user)
+    notes = Note.objects.get(id=pk, user=user)
+    serializer = NoteSerializer(notes, many=False)
     return Response(serializer.data)
 
 
 @api_view(['PUT'])
 def updateNote(request, pk):
     data = request.data
-    note = Note.objects.get(id=pk)
+    user = UserAccount.objects.get(username=request.user)
+    note = Note.objects.get(id=pk, user=user)
     serializer = NoteSerializer(instance=note, data=data)
 
     if serializer.is_valid():
@@ -66,17 +79,22 @@ def updateNote(request, pk):
 
     return Response(serializer.data)
 
+
 @api_view(['POST'])
 def createNote(request):
     data = request.data
+    user = UserAccount.objects.get(username=request.user)
     note = Note.objects.create(
-        body=data['body']
+        body=data['body'],
+        user=user
     )
     serializer = NoteSerializer(note, many=False)
     return Response(serializer.data)
 
+
 @api_view(['DELETE'])
 def deleteNote(request, pk):
-    note = Note.objects.get(id=pk)
+    user = UserAccount.objects.get(username=request.user)
+    note = Note.objects.get(id=pk, user=user)
     note.delete()
     return Response('Note was deleted!')

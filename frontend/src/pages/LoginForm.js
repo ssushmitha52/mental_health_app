@@ -87,6 +87,9 @@ class LoginForm extends React.Component {
             ;
             authSlice.actions.setAccount(res.data.user);
             this.setState({ loading: false });
+            localStorage.setItem('token', res.data.access);
+            let d = localStorage.getItem('token');
+            console.log(d)
             this.props.history.push("/home");
           })
           .catch((err) => {
@@ -130,6 +133,10 @@ class LoginForm extends React.Component {
             authSlice.actions.setAccount(res.data.user);
             this.setState({ loading: false });
             this.onSignIn();
+            localStorage.setItem('token', res.data.access);
+            localStorage.setItem('token', res.data.refresh);
+            let d = localStorage.getItem('token');
+            console.log(d)
           })
           .catch((err) => {
             this.setState({ message: err.toString() });

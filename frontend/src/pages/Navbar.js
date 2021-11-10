@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Button } from './Button';
 import { Link } from 'react-router-dom';
 import './Navbar.css';
+import axios from 'axios';
 
 
 
@@ -23,6 +24,11 @@ function Navbar() {
   useEffect(() => {
     showButton();
   }, []);
+
+  const logout = () => {
+    localStorage.removeItem('token');
+    localStorage.removeItem('token');
+  }
 
   window.addEventListener('resize', showButton);
 
@@ -75,7 +81,7 @@ function Navbar() {
                 to='/'
                 onClick={closeMobileMenu}
               >
-                {button && <Button buttonStyle='btn--outline' path='/'>LOGOUT</Button>}
+                {button && <Button buttonStyle='btn--outline' path='/' onClick={logout}>LOGOUT</Button>}
               </Link>
 
         </div>

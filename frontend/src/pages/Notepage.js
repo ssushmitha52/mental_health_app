@@ -13,13 +13,35 @@ const NotePage = ({match,history}) => {
     }, [noteid])
 
     let getNote = async () => {
-        if (noteid === 'new') return
-        let response = await fetch(`http://localhost:8000/api/notes/${noteid}/`)
-        let data = await response.json()
-        console.log(data)
-        setNote(data)
+        let t = localStorage.getItem('token');
+        console.log(t);
+        let response = await fetch(`http://localhost:8000/api/notes/${noteid}/`, {
+            method: "GET",
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${localStorage.getItem('token')}`
+            }
+        })
+        let data = await response.json();
+        console.log(data);
+        setNote(data);
     }
+
     let updateNote = async () => {
+        let t = localStorage.getItem('token');
+        console.log(t);
+        let response = await fetch(`http://localhost:8000/api/notes/${noteid}/update/`, {
+            method: "PUT",
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${localStorage.getItem('token')}`
+            },
+            body: JSON.stringify(note)
+        })
+    }
+
+
+    let updateNte = async () => {
         let response = await fetch(`http://localhost:8000/api/notes/${noteid}/update/`, {
             method: "PUT",
             headers: {
@@ -28,10 +50,29 @@ const NotePage = ({match,history}) => {
             body: JSON.stringify(note)
         })
     }
+
     let createNote = async () => {
+        let t = localStorage.getItem('token');
+        console.log(t);
         let response = await fetch(`http://localhost:8000/api/notes/create/`, {
             method: "POST",
             headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${localStorage.getItem('token')}`
+            },
+            body: JSON.stringify(note)
+        })
+        let data = await response.json();
+        console.log(data);
+    }
+
+
+
+    let createNot = async () => {
+        let response = await fetch(`http://localhost:8000/api/notes/create/`, {
+            method: "POST",
+            headers: {
+                'Authorization': `Bearer ${localStorage.getItem('token')}`,
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify(note)
@@ -41,6 +82,21 @@ const NotePage = ({match,history}) => {
     }
 
     let deleteNote = async () => {
+        let t = localStorage.getItem('token');
+        console.log(t);
+        let response = await fetch(`http://localhost:8000/api/notes/${noteid}/delete/`, {
+            method: "DELETE",
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${localStorage.getItem('token')}`
+            }
+        })
+        let data = await response.json();
+        console.log(data);
+        history.push('/notes');
+    }
+
+    let deleteNoe = async () => {
         let response= await fetch(`http://localhost:8000/api/notes/${noteid}/delete/`, {
             method: 'DELETE',
             'headers': {

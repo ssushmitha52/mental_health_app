@@ -27,7 +27,7 @@ class UserAccountManager(BaseUserManager):
         if username is None:
             raise TypeError('Superusers must have an username.')
 
-        user = self.model(usernamem=username, gender=gender, dob=dob, email=email, **extra_fields)
+        user = self.model(username=username, gender=gender, dob=dob, email=email, **extra_fields)
         user.is_superuser = True
         user.is_staff = True
         user.set_password(password)

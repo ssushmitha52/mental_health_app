@@ -2,22 +2,33 @@ import React, {useState,useEffect} from 'react'
 import ListItem from '../components/ListItem'
 import AddButton from '../components/AddButton'
 import './notes.css';
+import axios from 'axios';
 
 
 const NotesListPage = () => {
 
     let [notes, setNotes] =useState([])
 
+
     useEffect(()=>{
         getNotes()
     },[])
 
-    let getNotes = async()=>{
-        let response= await fetch('http://localhost:8000/api/notes/' )
-        let data = await response.json()
-        console.log(data)
-        setNotes(data)
+    let getNotes= async () => {
+        let t = localStorage.getItem('token');
+        console.log(t);
+        let response = await fetch(`http://localhost:8000/api/notes`, {
+            method: "GET",
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${localStorage.getItem('token')}`
+            }
+        })
+        let data = await response.json();
+        console.log(data);
+        setNotes(data);
     }
+
     return (
     <div className="journal">
         <div className="container dark journal">
