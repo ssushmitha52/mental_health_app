@@ -13,6 +13,14 @@
     color: #d95100;
     font-size: 1em;
     background-color: #e6f3fb;
+    font-family: 'Poppins', 'sans-serif';
+    display: inline-block;
+    justify-content: center;
+    width: 400px;
+    display: grid;
+    font-family: 'Poppins', sans-serif;
+    font-size: 16px;
+    margin: auto;
 }
 
 .start-entry-link:hover {

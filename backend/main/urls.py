@@ -1,8 +1,11 @@
-from django.contrib import admin
-from django.urls import path
-from . import views as main
+from django.urls import path, include, re_path
+from main.views import BootstrapFilterView, ReactFilterView, ReactInfiniteView
 
-
+# URLConf
 urlpatterns = [
-    path('connect/', main.connect, name="connect")
+    path('new/', views.getRoutes, name="routes"),
+    path('api-therapists/', ReactFilterView.as_view(), name='react'),
+    path('infinite-api-therapists/', ReactInfiniteView.as_view(), name='infinite-react'),
+
 ]
+

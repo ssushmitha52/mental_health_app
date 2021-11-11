@@ -1,3 +1,174 @@
+from django.db.models import Q, Count
+from django.shortcuts import render, get_object_or_404
+from rest_framework import generics
+from rest_framework.response import Response
+from .serializers import TherapistSerializer
+from .models import Therapists
+
+
+def is_valid_queryparam(param):
+    return param != '' and param is not None
+
+
+def filter(request):
+    qs = Journal.objects.all()
+    therapists = Therapists.objects.all()
+    age_count_min = request.GET.get('age_count_min')
+    age_count_max = request.GET.get('age_count_max')
+    gender = request.GET.get('gender')
+    special = request.GET.get('special')
+
+    if is_valid_queryparam(gender):
+        qs = qs.filter(gender__iexact=gender)
+
+    if is_valid_queryparam(special):
+        qs = qs.filter(specializations__name=special)
+
+    if is_valid_queryparam(age_count_min):
+        qs = qs.filter(age__gte=age_count_min)
+
+    if is_valid_queryparam(age_count_max):
+        qs = qs.filter(age__lte=age_count_max)
+
+    return qs
+
+
+def infinite_filter(request):
+    limit = request.GET.get('limit')
+    offset = request.GET.get('offset')
+    return Therapists.objects.all()[int(offset): int(offset) + int(limit)]
+
+
+def is_there_more_data(request):
+    offset = request.GET.get('offset')
+    if int(offset) > Therapists.objects.all().count():
+        return False
+    return True
+
+
+def BootstrapFilterView(request):
+    qs = filter(request)
+    context = {
+        'queryset': qs
+    }
+    return render(request, "bootstrap_form.html", context)
+
+
+class ReactFilterView(generics.ListAPIView):
+    serializer_class = TherapistSerializer
+
+    def get_queryset(self):
+        qs = filter(self.request)
+        return qs
+
+
+class ReactInfiniteView(generics.ListAPIView):
+    serializer_class = TherapistSerializer
+
+    def get_queryset(self):
+        qs = infinite_filter(self.request)
+        return qs
+
+    def list(self, request):
+        queryset = self.get_queryset()
+        serializer = self.serializer_class(queryset, many=True)
+        return Response({
+            "therapists": serializer.data,
+            "has_more": is_there_more_data(request)
+        })
+
+
+""""
+from django.shortcuts import render
+from django.http import HttpResponse
+from main.models import Person, Specialization, Therapists
+# from django.http.response import JsonResponse
+from rest_framework.response import Response
+from rest_framework.decorators import api_view
+from .models import Therapists
+from .serializers import TherapistSerializer
+from authentication.models import UserAccount
+# Create your views here.
+
+def is_valid_queryparam(param):
+    return param != '' and param is not None
+
+def filter(age_count_min = 20, age_count_max = 30,  gen = '', special='Anger Management'):
+    qs = Therapists.objects.all()
+    #categories = Category.objects.all()
+
+    if is_valid_queryparam(gen):
+        qs = qs.filter(gender__iexact=gen)
+
+    if is_valid_queryparam(special):
+        qs = qs.filter(specializations__name=special)
+
+    if is_valid_queryparam(age_count_min):
+        qs = qs.filter(age__gte=age_count_min)
+
+    if is_valid_queryparam(age_count_max):
+        qs = qs.filter(age__lte=age_count_max)
+
+    #print('\n')
+
+    return qs
+
+
+
+
+
+
+@api_view(['GET'])
+def getRoutes(request):
+    routes = [
+        {
+            'Endpoint': '/therapists/age_count_min/age_count_max/gen/special/',
+            'method': 'GET',
+            'body': None,
+            'description': 'Returns an array of therapists'
+        },
+        {
+            'Endpoint': '/therapists/id/',
+            'method': 'GET',
+            'body': None,
+            'description': 'Returns a single note object'
+        }
+    ]
+    return Response(routes)
+
+
+@api_view(['GET'])
+def getTherapists(request, age_count_min, age_count_max, gen, special):
+    therapists = filter(age_count_min, age_count_max, gen, special)
+    serializer = TherapistSerializer(therapists, many=True)
+    print(serializer.data)
+    print("FDg")
+    return Response(serializer.data)
+
+
+@api_view(['GET'])
+def getTherapist(request, pk):
+    print(pk)
+    qs = Therapists.objects.get(id=pk)
+    serializer = TherapistSerializer(notes, many=False)
+    return Response(serializer.data)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 #from django.shortcuts import render
 #from .models import *
 from copy import deepcopy
@@ -122,3 +293,4 @@ def connect():
     return 0
 
 connect()
+"""

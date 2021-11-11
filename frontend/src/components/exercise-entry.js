@@ -28,7 +28,7 @@ export class ExerciseEntry extends Component{
 
                 <div className="card">
 
-                    <img src={stressImg} alt="Stress icon" />
+                    <img src={stressImg} alt="Stress icon" className="sleepimg"/>
 
                     <h1>How often do you feel stressed?</h1>
 

@@ -34,16 +34,6 @@ class Form extends Component {
                     </select>
                   </div>
 
-                <label>Select experience preference for your therapist</label>
-                  <div class="select">
-                    <select id="exp-select">
-                      <option value="0-2">0-2</option>
-                      <option value="3-6">3-6</option>
-                      <option value="7-10">7-10</option>
-                      <option value="Doesn't Matter">Doesn't Matter</option>
-                      <span class="focus"></span>
-                    </select>
-                  </div>
 
                 <label>Select specialization of your preferred therapist</label>
                   <div class="select">

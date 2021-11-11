@@ -2,6 +2,10 @@ import React, {Component} from 'react';
 import {connect} from 'react-redux';
 
 import './review-entry.css';
+import analysis2 from '../images/analysis2.png';
+import stress from '../images/stress.png';
+import eating from '../images/eating.png';
+import sleepImg from '../images/sleep.png';
 
 export class ReviewEntry extends Component{
 
@@ -119,7 +123,7 @@ export class ReviewEntry extends Component{
                 <h2 className="box">
 
                     <h2 className="box">
-                    <img src={ require('../images/analysis2.png')} alt="Analysis icon" />
+                    <img src={analysis2} alt="Analysis icon" className="sleepimg"/>
                     <p>{Average}</p>
 
                 </h2>
@@ -132,15 +136,15 @@ export class ReviewEntry extends Component{
                 </h2>
                 
                 <h2 className="box">
-                    <img src={ require('../images/sleep.png')} alt="Sleep icon" />
+                    <img src={sleepImg} alt="Sleep icon" className="sleepimg"/>
                     <p>{sleepDescription}</p>
                 </h2>
                 <h2 className="box">
-                    <img src={ require('../images/eating.png')} alt="Eating icon" />
+                    <img src={eating} alt="Eating icon" className="sleepimg"/>
                     <p>{eatingDescription}</p>
                 </h2>
                 <h2 className="box">
-                    <img src={ require('../images/stress.png')} alt="Stress icon" />
+                    <img src={stress} alt="Stress icon" className="sleepimg"/>
                     <p>{exerciseDescription}</p>
                 </h2>
                 {/* <h2 className="box">Notes <br/>

@@ -27,7 +27,7 @@ export class EatingEntry extends Component{
 
                 <div className="card">
 
-                    <img src={eating} alt="Eating icon" />
+                    <img src={eating} alt="Eating icon" className="sleepimg"/>
 
                     <h1>How good is your appetite lately?</h1>
 

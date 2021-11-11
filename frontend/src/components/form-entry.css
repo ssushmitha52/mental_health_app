@@ -1,7 +1,8 @@
 
 .form-entry {
   /* background: url('/src/images/bg.jfif'); */
-  background: linear-gradient(90deg, #c09111 0%, rgb(26, 23, 23) 100%);
+  /*background: linear-gradient(90deg, #c09111 0%, rgb(26, 23, 23) 100%);
+  */
 }
 
 .logoForm {
@@ -9,6 +10,7 @@
   padding: 20px;
   font-family: 'Libre Baskerville', serif;
   border-bottom: 2px solid #0088D9;
+  text-align: center;
 }
 
 #next-button, #prev-button {
@@ -50,4 +52,30 @@
   .card {
     margin: 20px 400px;
   }
+}
+
+ol.progtrckr {
+  list-style-type: none;
+  padding: 0;
+  text-align: center;
+}
+
+h1 {
+  text-align: center;
+  margin: 24px 0px;
+  font-family: 'Poppins', sans-serif;
+}
+
+h2 {
+  text-align: center;
+  margin: 24px 0px;
+  font-family: 'Poppins', sans-serif;
+}
+
+.sleepimg {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+
 }

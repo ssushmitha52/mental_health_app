@@ -29,7 +29,7 @@ export class SleepEntry extends Component{
 
                 <div className="card">
 
-                    <img src={sleepImg} alt="Sleep icon" />
+                    <img src={sleepImg} alt="Sleep icon" className="sleepimg"/>
 
                     <h1>What was the quality level of your sleep last night?</h1>
 
