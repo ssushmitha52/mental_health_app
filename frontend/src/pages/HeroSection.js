@@ -40,7 +40,7 @@ function HeroSection() {
           onClick={handleJournal}
           
         >
-          Journaling <i className='far fa-play-circle' />
+          Journaling
         </Button>
         <Button
           className='btns'
@@ -49,7 +49,7 @@ function HeroSection() {
 
           
         >
-          Connect to a therapist <i className='far fa-play-circle' />
+          Connect to a therapist
         </Button>
       </div>
     </div>

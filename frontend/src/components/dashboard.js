@@ -102,7 +102,7 @@ export class Dashboard extends Component{
                 <h1>MY DASHBOARD</h1>
 
                 <section className="hello">
-                    Welcome, Suchi
+                    Welcome
                 </section>
 
                 <section className="start">

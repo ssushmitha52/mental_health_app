@@ -12,6 +12,7 @@
 
 import React from 'react';
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import Form from "./containers/Form";
 import LoginForm from "./pages/LoginForm";
 import Home from "./pages/Home";
 import Journal from "./pages/Journal";
@@ -24,6 +25,7 @@ import store from './store';
 import { PersistGate } from "redux-persist/integration/react";
 import { Provider } from "react-redux";
 import ProtectedRoute from "./routes/ProtectedRoute";
+import Hoc from "./hoc/hoc";
 
 export default function App() {
   return (
@@ -41,6 +43,9 @@ export default function App() {
                       <Route path='/form-entry' component={FormEntry} />
                       <Route path='/dashboard' component={Dashboard} />
                   </main>
+                  <Hoc>
+                    <Route path='/form' component={Form} />
+                  </Hoc>
                 </Switch>
           </div>
         </Router>

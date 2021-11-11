@@ -16,6 +16,7 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from rest_framework_jwt.views import obtain_jwt_token
+from core.views import BootstrapFilterView
 
 
 urlpatterns = [
@@ -23,5 +24,6 @@ urlpatterns = [
     path('api/', include(('journal.urls', 'notes'), namespace='notes-api')),
     path('api/', include(('entry.urls', 'entries'), namespace='entries-api')),
     path('api/', include(('main.urls', 'therapists'), namespace='therapists-api')),
+    path('', BootstrapFilterView, name='bootstrap'),
     path('admin/', admin.site.urls)
 ]

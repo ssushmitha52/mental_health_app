@@ -103,13 +103,13 @@ export class ReviewEntry extends Component{
         //   }
         
         if (AverageValue < 2) {
-            Average = 'You seem glum today :('
+            Average = 'You seem glum today :( Try taking a walk or call a friend and express your feelings...'
         }
         else if (AverageValue >= 2 & AverageValue < 3) {
-            Average = "Your mood seems average"
+            Average = "Your mood seems average. Listen to your favourite music or start a gratitude journal! "
         }
         else if (AverageValue >= 3 & AverageValue < 4) {
-            Average = "Glad to see that you are happy :)"
+            Average = "Glad to see that you are happy :) Get crafty or catch up with some friends to share your joy!"
         }
         else {
             Average = "You seem amazing today! Keep it up!"

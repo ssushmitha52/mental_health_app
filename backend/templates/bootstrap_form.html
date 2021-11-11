@@ -28,14 +28,18 @@
 
       <h3>Filter Journals</h3>
       <form method="GET" action=".">
-                
-                    <select class="custom-select custom-select-lg mb-3">
-                      <option selected>Age range</option>
-                      <option value="1">One</option>
-                      <option value="2">Two</option>
-                      <option value="3">Three</option>
-                    </select>
-          
+        <div class="form-row">
+            <div class="form-group col-12">
+                <div class="input-group">
+                    <input class="form-control py-2 border-right-0 border" type="search" name="age_contains" placeholder="Age range" />
+                    <span class="input-group-append">
+                        <div class="input-group-text bg-transparent">
+                            <i class="fa fa-search"></i>
+                        </div>
+                    </span>
+                </div>
+            </div>
+        </div>
         <div class="form-row">
             <div class="form-group col-12">
                 <div class="input-group">
@@ -46,7 +50,7 @@
                         </div>
                     </span>
                 </div>
-            </div>        
+            </div>
         </div>
         <div class="form-row">
             <div class="form-group col-12">
@@ -58,9 +62,9 @@
                         </div>
                     </span>
                 </div>
-            </div>        
+            </div>
         </div>
-        
+
         <button type="submit" class="btn btn-primary">Search</button>
       </form>
 
