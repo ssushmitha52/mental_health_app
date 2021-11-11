@@ -45,7 +45,6 @@ def getEntries(request):
     print(request.user)
     user = UserAccount.objects.get(username=request.user)
     notes = Entry.objects.filter(user=user)
-    print("FDg", notes)
     serializer = EntrySerializer(notes, many=True)
     print(serializer.data)
     print("FDg")
@@ -67,10 +66,9 @@ def updateEntry(request, pk):
     user = UserAccount.objects.get(username=request.user)
 
     note = Entry.objects.get(id=pk, user=user)
-    print(note)
     print("Fg")
 
-    print(data.moodTypes)
+    print(data)
     serializer = EntrySerializer(instance=note, data=data)
 
     if serializer.is_valid():

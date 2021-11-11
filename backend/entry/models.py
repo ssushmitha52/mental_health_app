@@ -1,12 +1,13 @@
 from django.db import models
 from authentication.models import UserAccount
-from django_mysql.models import JSONField
+from django.db import models
+import jsonfield
 
 
 class Entry(models.Model):
-    date = models.DateTimeField(auto_now=True,blank=True, null=True,)
+    date = models.DateTimeField(blank=True, null=True,)
     mood = models.IntegerField()
-    moodTypes = models.JSONField()
+    moodTypes = jsonfield.JSONField()
     sleep = models.IntegerField()
     eating = models.IntegerField()
     exercise = models.CharField(max_length=100)
