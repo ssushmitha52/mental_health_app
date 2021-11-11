@@ -12,7 +12,7 @@ export class NotesEntry extends Component{
 
     render() {
         return (
-            <div className="notes">
+            <div className="notes-e">
 
                 <h1>Enter any notes for today. What is going on in your world?</h1>
 

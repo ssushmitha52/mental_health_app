@@ -13,6 +13,10 @@ function HeroSection() {
     history.push("/journal");
   }
 
+  function handleTracker() {
+    history.push("/form-entry");
+  }
+
   return (
   <div>
     <Navbar />
@@ -24,6 +28,7 @@ function HeroSection() {
           className='btns'
           buttonStyle='btn--outline'
           buttonSize='btn--large'
+          onClick={handleTracker}
         >
           Happiness Tracker
           {/* <p><h5></h5></p> */}
