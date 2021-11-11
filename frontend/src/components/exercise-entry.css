@@ -1,0 +1,51 @@
+.card {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  max-width: 80%;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #e6f3fb;
+}
+
+h1 {
+  font-size: 1.5em;
+}
+
+.choices {
+  text-align: left;
+}
+
+.exercises {
+  list-style: none;
+  padding: 20px;
+}
+
+.hide {
+  display: none;
+}
+
+label {
+  font-size: 26px;
+}
+
+.fa-circle {
+  padding-right: 10px;
+  font-size: 30px;
+}
+
+@media screen and (min-width: 630px) {
+  .card {
+    margin: 10px 80px;
+  }
+  h1 {
+    font-size: 2em;
+  }
+}
+
+@media screen and (min-width: 910px) {
+  .card {
+    margin: 20px 200px;
+  }
+  .choices {
+    margin-left: 50px;
+  }
+}

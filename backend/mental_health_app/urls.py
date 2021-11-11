@@ -21,5 +21,6 @@ from rest_framework_jwt.views import obtain_jwt_token
 urlpatterns = [
     path('api/', include(('mental_health_app.routers', 'core'), namespace='core-api')),
     path('api/', include(('journal.urls', 'notes'), namespace='notes-api')),
+    path('api/', include(('entry.urls', 'entries'), namespace='entries-api')),
     path('admin/', admin.site.urls)
 ]

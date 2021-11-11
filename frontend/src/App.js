@@ -18,7 +18,9 @@ import Journal from "./pages/Journal";
 import SignUp from "./pages/SignUp";
 import NotesListPage from "./pages/NotesListPage";
 import NotePage from "./pages/Notepage";
-import store, { persistor } from "./store/slices/index";
+import FormEntry from './components/form-entry';
+import Dashboard from './components/dashboard';
+import store from './store';
 import { PersistGate } from "redux-persist/integration/react";
 import { Provider } from "react-redux";
 import ProtectedRoute from "./routes/ProtectedRoute";
@@ -26,7 +28,6 @@ import ProtectedRoute from "./routes/ProtectedRoute";
 export default function App() {
   return (
     <Provider store={store}>
-      <PersistGate persistor={persistor} loading={null}>
         <Router>
           <div className="App">
             <Switch>
@@ -36,11 +37,11 @@ export default function App() {
               <Route exact path="/notes" component={NotesListPage} />
               <Route path="/note/:id" component={NotePage} />
               <Route exact path="/text-editor" component={Journal} />
-
+              <Route path='/form-entry' component={FormEntry} />
+              <Route path='/dashboard' component={Dashboard} />
             </Switch>
           </div>
         </Router>
-      </PersistGate>
     </Provider>
   );
 }
