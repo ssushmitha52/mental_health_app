@@ -17,7 +17,7 @@ import {addEntry} from "../actions";
 export class FormEntry extends Component{
 
     saveEntry(step){
-        if(step === 6) {
+        if(step === 5) {
             this.props.dispatch(addEntry(this.props.newEntry));
         }
     }

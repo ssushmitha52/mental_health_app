@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import {addExercise} from '../actions/index';
+import stressImg from '../images/stress.png';
 
 import './exercise-entry.css';
 
@@ -27,7 +28,7 @@ export class ExerciseEntry extends Component{
 
                 <div className="card">
 
-                    <img src={ require('../images/stress.png')} alt="Stress icon" />
+                    <img src={stressImg} alt="Stress icon" />
 
                     <h1>How often do you feel stressed?</h1>
 

@@ -1,6 +1,9 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import {addMood, addMoodTypes, removeMoodTypes} from '../actions/index';
+import happyImg from '../images/happy.png';
+import sadImg from '../images/sad.png';
+import okImg from '../images/ok.png';
 
 import './mood-entry.css';
 
@@ -57,9 +60,9 @@ export class MoodEntry extends Component{
 
                 <div className="card">
 
-                    <img src={ require('../images/happy.png')} alt="Happy Face" />
-                    <img src={ require('../images/ok.png')} alt="OK Face" />
-                    <img src={ require('../images/sad.png')} alt="Sad Face" />
+                    <img src={happyImg} alt="Happy Face" />
+                    <img src={okImg} alt="OK Face" />
+                    <img src={sadImg} alt="Sad Face" />
 
                     <h1>Hello Amigo, how are you feeling today?</h1>
 

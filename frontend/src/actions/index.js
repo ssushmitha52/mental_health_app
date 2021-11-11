@@ -44,7 +44,7 @@ export const addNotes = notes => ({
 
 export const fetchEntry = () => dispatch => {
     dispatch(fetchEntryRequest());
-    fetch(`${API_BASE_URL}/entries/:id`, {
+    fetch(`${API_BASE_URL}/entries/:id/`, {
         method: 'get',
         headers:{
             "Content-type": 'application/json',
@@ -79,7 +79,7 @@ export const fetchEntryError = error => ({
 
 export const fetchEntries = () => dispatch => {
     dispatch(fetchEntriesRequest());
-    fetch(`${API_BASE_URL}/entries`, {
+    fetch(`${API_BASE_URL}/entries/`, {
         method: 'get',
         headers:{
             "Content-type": 'application/json',
@@ -114,11 +114,12 @@ export const fetchEntriesError = error => ({
 
 export const addEntry = (entry) => dispatch => {
     dispatch(addEntryRequest());
-    fetch(`${API_BASE_URL}/entries/create`, {
+    fetch(`${API_BASE_URL}/entries/create/`, {
         method: 'post',
         body: JSON.stringify(entry),
         headers:{
-            "Content-type": 'application/json'
+            "Content-type": 'application/json',
+            "Authorization" : `Bearer ${localStorage.getItem('token')}`
         }
     })
         .then(res => res.json())
@@ -149,11 +150,12 @@ export const addEntryError = error => ({
 
 export const editEntry = (entry) => dispatch => {
     dispatch(editEntryRequest());
-    fetch(`${API_BASE_URL}/entries/:id/update`, {
+    fetch(`${API_BASE_URL}/entries/:id/update/`, {
         method: 'put',
         body: JSON.stringify(entry),
         headers:{
-            "Content-type": 'application/json'
+            "Content-type": 'application/json',
+            "Authorization" : `Bearer ${localStorage.getItem('token')}`
         }
     })
         .then(res => res.json())

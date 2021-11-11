@@ -1,6 +1,8 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import {addSleep} from '../actions/index';
+import sleepImg from '../images/sleep.png';
+
 
 import './sleep-entry.css';
 
@@ -27,7 +29,7 @@ export class SleepEntry extends Component{
 
                 <div className="card">
 
-                    <img src={ require('../images/sleep.png')} alt="Sleep icon" />
+                    <img src={sleepImg} alt="Sleep icon" />
 
                     <h1>What was the quality level of your sleep last night?</h1>
 

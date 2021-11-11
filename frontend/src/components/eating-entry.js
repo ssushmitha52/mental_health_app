@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import {addEating} from '../actions/index';
-
+import eating from '../images/eating.png';
 import './eating-entry.css';
 
 export class EatingEntry extends Component{
@@ -27,7 +27,7 @@ export class EatingEntry extends Component{
 
                 <div className="card">
 
-                    <img src={ require('../images/eating.png')} alt="Eating icon" />
+                    <img src={eating} alt="Eating icon" />
 
                     <h1>How good is your appetite lately?</h1>
 

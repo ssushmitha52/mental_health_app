@@ -30,16 +30,18 @@ export default function App() {
     <Provider store={store}>
         <Router>
           <div className="App">
-            <Switch>
-              <Route exact path="/" component={LoginForm} />
-              <Route exact path="/home" component={Home} />
-              <Route exact path="/journal" component={SignUp} />
-              <Route exact path="/notes" component={NotesListPage} />
-              <Route path="/note/:id" component={NotePage} />
-              <Route exact path="/text-editor" component={Journal} />
-              <Route path='/form-entry' component={FormEntry} />
-              <Route path='/dashboard' component={Dashboard} />
-            </Switch>
+                <Switch>
+                  <Route exact path="/" component={LoginForm} />
+                  <Route exact path="/home" component={Home} />
+                  <Route exact path="/journal" component={SignUp} />
+                  <Route exact path="/notes" component={NotesListPage} />
+                  <Route path="/note/:id" component={NotePage} />
+                  <Route exact path="/text-editor" component={Journal} />
+                  <main role="main">
+                      <Route path='/form-entry' component={FormEntry} />
+                      <Route path='/dashboard' component={Dashboard} />
+                  </main>
+                </Switch>
           </div>
         </Router>
     </Provider>
