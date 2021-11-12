@@ -11,6 +11,6 @@
   * SQLite
 
 ### IDE required:
-   *Visual Studio Code : For React App
-   *PyCharm : For Django
-   *(Any other working IDE can be used too)
+   * Visual Studio Code : For React App
+   * PyCharm : For Django
+   * (Any other working IDE can be used too)
