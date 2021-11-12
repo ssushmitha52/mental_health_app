@@ -24,6 +24,9 @@ In the virtual env make sure to install django using : pip install django.
    * dashboard.js : Mood graphs are displayed here and the user can be redirected to enter mood for that particular day from here too
    * Notepage.js : Text editor to create a new note/journal
    * NoteListPage.js : Displays the previous notes enterred by the user
+
+### Front End (React js)
+   *
    
 ## Software tool requirements:
 ### Front end:
