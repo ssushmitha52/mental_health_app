@@ -18,11 +18,11 @@
    
 ## Software tool requirements:
 ### Front end:
-  * ReactJS
-
+  * `ReactJS`
+ 
 ### Back end:
-  * Django
-  * SQLite
+  * `Django`
+  * `SQLite`
 
 ### IDE required:
    * Visual Studio Code : For React App
