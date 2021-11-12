@@ -38,12 +38,12 @@
    * (Any other working IDE can be used too)
 
 ## How to run
-### Backend end:
-To populate the database of all the therapists, run the command : python manage.py create_data names
+### Back end:
+To populate the database of all the therapists, run the command : `python manage.py create_data names`
 The name file here is a list of names and running this command adds all this data to the sqlite database.
 
-To run the backend ensure to create a virtual environment using the command : virtualenv <name>
-and then navigate into the environment of the <name> you gave. Activate the environment using the command : Scripts\activate
+To run the backend ensure to create a virtual environment using the command : `virtualenv <name>`
+and then navigate into the environment of the <name> you gave. Activate the environment using the command : `Scripts\activate`
    
 In the virtual env make sure to install dependencies using : `pip install -r requirements.txt`
 Run backend using: `python manage.py runserver`
