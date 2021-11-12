@@ -8,3 +8,4 @@
 
 ### Back end:
   * Django
+  * SQLite
