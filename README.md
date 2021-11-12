@@ -16,8 +16,13 @@
    * Notepage.js : Text editor to create a new note/journal
    * NoteListPage.js : Displays the previous notes enterred by the user
 
-### Front End (React js)
-   *
+### Back End (Django)
+   * auth, authetication: Registration and Login using JWT token authentication
+   * entry: Backend for Happiness Tracker which contains the table models and apis for mood entry and displaying charts
+   * journal: Backend for Journaling Page which includes models and apis for working with notes
+   * core: Backend for Therapist Connect where users can query using multiple filters on therapists
+   * main: Backend for Biparitie matching which is yet to be integrated but implemented
+   * mental_health_app: Main Driver Folder that contains the project configuration.
    
 ## Software tool requirements:
 ### Front end:
