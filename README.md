@@ -51,5 +51,6 @@ Install django in virtual environment using : `pip install django`.
 In the virtual env make sure to install dependencies using : `pip install -r requirements.txt`
 Run backend using: `python manage.py runserver`
 
+### Front end:
 To run the front-end alongside, navigate to the file in another command prompt and run the command : `npm install`
 To run React : `npm start`
