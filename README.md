@@ -46,6 +46,10 @@ The name file here is a list of names and running this command adds all this dat
 
 To run the backend ensure to create a virtual environment using the command : `virtualenv <name>`
 and then navigate into the environment of the <name> you gave. Activate the environment using the command : `Scripts\activate`
-   
+
+Install django in virtual environment using : `pip install django`. 
 In the virtual env make sure to install dependencies using : `pip install -r requirements.txt`
 Run backend using: `python manage.py runserver`
+
+To run the front-end alongside, navigate to the file in another command prompt and run the command : `npm install`
+To run React : `npm start`
