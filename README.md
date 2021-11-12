@@ -41,7 +41,7 @@
 
 ## How to run
 ### Back end:
-To populate the database of all the therapists, run the command : `python manage.py create_data names`
+To populate the database of all the therapists, run the command : ```python manage.py create_data names```
 The name file here is a list of names and running this command adds all this data to the sqlite database.
 
 To run the backend ensure to create a virtual environment using the command : `virtualenv <name>`
